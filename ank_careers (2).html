@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANK Corporation — Careers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#04090f;--bg2:#071628;--bg3:#0a1f3d;
+  --cyan:#00d4ff;--cyan2:#0098bb;--royal:#1565c0;--royal2:#1e88e5;
+  --text:#e0f4ff;--muted:#6ab0d4;--dim:#3a6080;
+  --border:#0e3a6e;--border2:#1565c0;--green:#00ff88;--red:#ff4466;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--royal);border-radius:2px;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:999;height:60px;display:flex;align-items:center;gap:2rem;padding:0 2rem;background:rgba(4,9,15,.95);backdrop-filter:blur(16px);border-bottom:.5px solid var(--border);}
+.nav-brand{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--cyan);letter-spacing:.1em;flex-shrink:0;}
+.nav-scroll{display:flex;overflow-x:auto;scrollbar-width:none;flex:1;}
+.nav-scroll::-webkit-scrollbar{display:none;}
+.nav-scroll a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0 1rem;height:60px;display:flex;align-items:center;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;flex-shrink:0;}
+.nav-scroll a:hover,.nav-scroll a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+.nav-cta{flex-shrink:0;background:var(--cyan);color:#04090f;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:6px;text-decoration:none;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+
+/* HERO */
+.hero{text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(0,212,255,.07),transparent 70%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);background:rgba(0,212,255,.08);border:.5px solid rgba(0,212,255,.25);padding:5px 14px;border-radius:20px;margin-bottom:1.5rem;}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1.2rem;}
+.hero-title span{color:var(--cyan);}
+.hero-sub{font-size:15px;color:var(--muted);max-width:560px;margin:0 auto 2.5rem;line-height:1.7;}
+.hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:3rem;}
+.stat-item{text-align:center;}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--cyan);display:block;}
+.stat-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);}
+.interview-banner{max-width:680px;margin:0 auto 2rem;background:var(--bg3);border:1px solid var(--royal);border-radius:14px;padding:1.5rem 2rem;display:flex;align-items:flex-start;gap:1.2rem;text-align:left;}
+.banner-icon{font-size:2rem;flex-shrink:0;margin-top:2px;}
+.banner-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:4px;font-weight:600;}
+.banner-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;}
+.banner-address{font-size:14px;color:var(--muted);line-height:1.6;}
+.banner-address strong{color:var(--text);}
+.map-btn{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:var(--cyan);text-decoration:none;border:.5px solid var(--cyan2);padding:5px 14px;border-radius:6px;letter-spacing:.05em;transition:background .2s;}
+.map-btn:hover{background:rgba(0,212,255,.08);}
+.apply-btn{display:inline-block;background:var(--cyan);color:#04090f;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px 36px;border-radius:8px;text-decoration:none;margin-top:1rem;transition:opacity .2s,transform .1s;cursor:pointer;border:none;}
+.apply-btn:hover{opacity:.9;transform:translateY(-1px);}
+.divider{width:40px;height:1.5px;background:var(--cyan);margin:0 auto 4rem;opacity:.6;}
+
+/* TIERS */
+.tier{max-width:1200px;margin:0 auto;padding:0 2rem 4rem;scroll-margin-top:70px;}
+.tier-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.tier-number{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--cyan);background:rgba(0,212,255,.08);border:.5px solid rgba(0,212,255,.2);padding:3px 10px;border-radius:20px;flex-shrink:0;}
+.tier-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.tier-line{flex:1;height:.5px;background:var(--border);}
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+.dept-card{background:var(--bg2);border:.5px solid var(--border);border-radius:12px;padding:20px;transition:border-color .2s,background .2s;position:relative;overflow:hidden;}
+.dept-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--royal),transparent);opacity:0;transition:opacity .2s;}
+.dept-card:hover{border-color:var(--border2);background:var(--bg3);}
+.dept-card:hover::after{opacity:1;}
+.dept-card.exec{border-color:rgba(21,101,192,.5);background:var(--bg3);}
+.dept-card.exec::after{opacity:.5;}
+.dept-card.filled{opacity:.45;pointer-events:none;}
+.dept-card.filled::before{content:'✓ FILLED';position:absolute;top:12px;right:12px;font-size:9px;font-weight:700;letter-spacing:.15em;color:#00ff88;background:rgba(0,255,136,.1);border:.5px solid rgba(0,255,136,.3);padding:2px 8px;border-radius:20px;}
+.dept-icon{font-size:20px;margin-bottom:10px;}
+.dept-div{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan2);margin-bottom:4px;}
+.dept-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:10px;}
+.hiring-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:rgba(0,255,136,.08);border:.5px solid rgba(0,255,136,.2);padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:10px;}
+.role-list{list-style:none;border-top:.5px solid var(--border);padding-top:10px;}
+.role-list li{font-size:12px;color:var(--muted);padding:3px 0;display:flex;align-items:center;gap:6px;}
+.role-list li::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--royal2);flex-shrink:0;}
+.role-count{display:inline-block;margin-top:12px;font-size:10px;font-weight:500;padding:2px 10px;border-radius:20px;background:rgba(21,101,192,.15);color:var(--cyan);border:.5px solid rgba(21,101,192,.4);letter-spacing:.05em;}
+.role-apply-btn{display:block;margin-top:12px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#04090f;background:var(--cyan);padding:7px 0;border-radius:6px;border:none;cursor:pointer;width:100%;transition:opacity .2s;}
+.role-apply-btn:hover{opacity:.85;}
+
+/* HOW TO APPLY */
+.apply-section{max-width:900px;margin:0 auto;padding:0 2rem;scroll-margin-top:70px;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:2.5rem;}
+.step{background:var(--bg2);border:.5px solid var(--border);border-radius:12px;padding:20px;text-align:center;}
+.step-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--cyan);opacity:.3;margin-bottom:8px;}
+.step-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.step-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.location-card{background:var(--bg3);border:1px solid var(--royal);border-radius:14px;padding:2rem;text-align:center;margin-bottom:4rem;}
+.location-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
+.location-card p{font-size:14px;color:var(--muted);margin-bottom:6px;}
+.location-card .address{font-size:16px;color:var(--cyan);font-weight:600;margin:12px 0;}
+
+/* MODAL OVERLAY */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(3,7,14,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border:.5px solid var(--border2);border-radius:16px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-header{padding:1.5rem 2rem 1rem;border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;}
+.modal-sub{font-size:12px;color:var(--cyan);margin-top:2px;}
+.modal-close{background:none;border:.5px solid var(--border);color:var(--muted);font-size:18px;cursor:pointer;border-radius:6px;padding:4px 10px;transition:color .2s,border-color .2s;}
+.modal-close:hover{color:#fff;border-color:var(--text);}
+.modal-body{padding:1.5rem 2rem 2rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.form-label .req{color:var(--cyan);margin-left:2px;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg3);border:.5px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--cyan);}
+.form-select option{background:var(--bg3);color:var(--text);}
+.form-textarea{min-height:90px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-hint{font-size:11px;color:var(--dim);margin-top:4px;}
+.resume-upload{border:.5px dashed var(--border2);border-radius:8px;padding:1.5rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
+.resume-upload:hover{border-color:var(--cyan);background:rgba(0,212,255,.03);}
+.resume-upload input{display:none;}
+.resume-upload-icon{font-size:1.6rem;margin-bottom:6px;}
+.resume-upload-text{font-size:12px;color:var(--muted);}
+.resume-upload-text strong{color:var(--cyan);}
+.resume-filename{font-size:12px;color:var(--green);margin-top:6px;}
+.submit-btn{width:100%;background:var(--cyan);color:#04090f;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:14px;border-radius:8px;border:none;cursor:pointer;transition:opacity .2s;margin-top:.5rem;}
+.submit-btn:hover{opacity:.9;}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+
+/* SUCCESS */
+.success-screen{display:none;text-align:center;padding:3rem 2rem;}
+.success-icon{font-size:3rem;margin-bottom:1rem;}
+.success-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px;}
+.success-desc{font-size:14px;color:var(--muted);line-height:1.7;}
+
+/* ADMIN PANEL */
+.admin-panel{display:none;position:fixed;inset:0;z-index:3000;background:rgba(3,7,14,.92);backdrop-filter:blur(12px);flex-direction:column;}
+.admin-panel.open{display:flex;}
+.admin-header{padding:1rem 2rem;border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg2);}
+.admin-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--cyan);}
+.admin-close{background:none;border:.5px solid var(--border);color:var(--muted);font-size:16px;cursor:pointer;border-radius:6px;padding:4px 12px;}
+.admin-body{flex:1;overflow-y:auto;padding:2rem;display:grid;grid-template-columns:1fr 2fr;gap:2rem;}
+.admin-list{display:flex;flex-direction:column;gap:8px;}
+.admin-list-item{background:var(--bg2);border:.5px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .2s;}
+.admin-list-item:hover,.admin-list-item.active{border-color:var(--cyan);}
+.ali-name{font-size:13px;font-weight:600;color:var(--text);}
+.ali-role{font-size:11px;color:var(--muted);margin-top:2px;}
+.ali-status{font-size:10px;font-weight:600;letter-spacing:.1em;padding:2px 8px;border-radius:20px;display:inline-block;margin-top:6px;}
+.status-pending{color:#ffa500;background:rgba(255,165,0,.1);border:.5px solid rgba(255,165,0,.3);}
+.status-interview{color:var(--cyan);background:rgba(0,212,255,.1);border:.5px solid rgba(0,212,255,.3);}
+.status-hired{color:var(--green);background:rgba(0,255,136,.1);border:.5px solid rgba(0,255,136,.3);}
+.status-rejected{color:var(--red);background:rgba(255,68,102,.1);border:.5px solid rgba(255,68,102,.3);}
+.admin-detail{background:var(--bg2);border:.5px solid var(--border);border-radius:12px;padding:1.5rem;overflow-y:auto;}
+.detail-empty{text-align:center;color:var(--dim);padding:3rem;font-size:14px;}
+.detail-name{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;}
+.detail-role{font-size:13px;color:var(--cyan);margin-bottom:1rem;}
+.detail-section{margin-bottom:1.5rem;}
+.detail-section-title{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;padding-bottom:6px;border-bottom:.5px solid var(--border);}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.detail-field{background:var(--bg3);border:.5px solid var(--border);border-radius:8px;padding:10px 12px;}
+.detail-field-label{font-size:10px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;}
+.detail-field-value{font-size:13px;color:var(--text);margin-top:2px;}
+.ai-box{background:rgba(0,212,255,.04);border:.5px solid rgba(0,212,255,.2);border-radius:10px;padding:1rem;margin-bottom:1rem;}
+.ai-box-title{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+.ai-summary{font-size:13px;color:var(--muted);line-height:1.7;}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.pro-box{background:rgba(0,255,136,.05);border:.5px solid rgba(0,255,136,.2);border-radius:8px;padding:10px;}
+.con-box{background:rgba(255,68,102,.05);border:.5px solid rgba(255,68,102,.2);border-radius:8px;padding:10px;}
+.pro-box h4{font-size:10px;font-weight:700;color:var(--green);letter-spacing:.1em;margin-bottom:6px;}
+.con-box h4{font-size:10px;font-weight:700;color:var(--red);letter-spacing:.1em;margin-bottom:6px;}
+.pro-box li,.con-box li{font-size:12px;color:var(--muted);margin-bottom:4px;list-style:none;display:flex;gap:5px;}
+.pro-box li::before{content:'✓';color:var(--green);flex-shrink:0;}
+.con-box li::before{content:'✗';color:var(--red);flex-shrink:0;}
+.status-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;}
+.status-btn{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:6px;border:none;cursor:pointer;transition:opacity .2s;}
+.status-btn:hover{opacity:.8;}
+.btn-interview{background:rgba(0,212,255,.15);color:var(--cyan);border:.5px solid var(--cyan);}
+.btn-hired{background:rgba(0,255,136,.15);color:var(--green);border:.5px solid var(--green);}
+.btn-rejected{background:rgba(255,68,102,.15);color:var(--red);border:.5px solid var(--red);}
+
+/* APEX CHATBOT */
+.apex-btn{position:fixed;bottom:2rem;right:2rem;z-index:1500;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--royal),var(--cyan));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(0,212,255,.3);transition:transform .2s;}
+.apex-btn:hover{transform:scale(1.1);}
+.apex-badge{position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:var(--cyan);border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#04090f;}
+.apex-window{position:fixed;bottom:5.5rem;right:2rem;z-index:1500;width:340px;background:var(--bg2);border:.5px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);display:none;flex-direction:column;}
+.apex-window.open{display:flex;}
+.apex-header{padding:.9rem 1.2rem;background:var(--bg3);border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:.7rem;}
+.apex-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--royal),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0;}
+.apex-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:#fff;}
+.apex-status{font-size:10px;color:var(--green);}
+.apex-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.5rem;max-height:300px;}
+.apex-msg{max-width:85%;padding:8px 12px;border-radius:10px;font-size:12.5px;line-height:1.5;}
+.apex-msg.bot{background:var(--bg3);color:var(--text);align-self:flex-start;border:.5px solid var(--border);}
+.apex-msg.user{background:var(--royal);color:#fff;align-self:flex-end;}
+.apex-msg.bot b{color:var(--cyan);}
+.apex-typing{align-self:flex-start;padding:8px 12px;background:var(--bg3);border:.5px solid var(--border);border-radius:10px;font-size:12px;color:var(--dim);}
+.apex-input-row{display:flex;gap:.5rem;padding:.8rem;border-top:.5px solid var(--border);}
+.apex-input{flex:1;background:var(--bg3);border:.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--text);outline:none;font-family:'Inter',sans-serif;}
+.apex-input:focus{border-color:var(--cyan);}
+.apex-send{background:var(--cyan);color:#04090f;border:none;border-radius:8px;padding:8px 12px;font-size:14px;cursor:pointer;font-weight:700;transition:opacity .2s;}
+.apex-send:hover{opacity:.85;}
+.apex-quick{display:flex;flex-wrap:wrap;gap:5px;padding:.5rem .8rem 0;}
+.apex-quick-btn{font-size:10px;padding:4px 10px;border-radius:20px;background:rgba(0,212,255,.06);border:.5px solid rgba(0,212,255,.2);color:var(--cyan);cursor:pointer;transition:background .2s;white-space:nowrap;}
+.apex-quick-btn:hover{background:rgba(0,212,255,.12);}
+
+/* ADMIN BTN */
+.admin-toggle{position:fixed;bottom:2rem;left:2rem;z-index:1500;background:var(--bg3);border:.5px solid var(--border2);color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border-radius:8px;cursor:pointer;transition:color .2s,border-color .2s;}
+.admin-toggle:hover{color:var(--cyan);border-color:var(--cyan);}
+
+footer{border-top:.5px solid var(--border);padding:3rem 2rem;text-align:center;}
+.footer-brand{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--cyan);letter-spacing:.15em;margin-bottom:8px;}
+.footer-tagline{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
+
+@media(max-width:700px){
+  .admin-body{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .pros-cons{grid-template-columns:1fr;}
+  .detail-grid{grid-template-columns:1fr;}
+  .apex-window{width:calc(100vw - 3rem);right:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">ANK</div>
+  <div class="nav-scroll">
+    <a href="#tier1">Executive</a><a href="#tier2">Engineering</a><a href="#tier3">Manufacturing</a>
+    <a href="#tier4">Operations</a><a href="#tier5">Hospitality</a><a href="#tier6">Security</a>
+    <a href="#tier7">Brand</a><a href="#how-to-apply">How to Apply</a>
+  </div>
+  <a class="nav-cta" href="#how-to-apply">Apply Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span class="pulse"></span> Now Hiring — All Positions Open</div>
+  <h1 class="hero-title">Build the future<br>with <span>ANK.</span></h1>
+  <p class="hero-sub">We are building the world's most ambitious company from the ground up — and we need extraordinary people across every discipline. Click any role below to apply.</p>
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num" id="openCount">28</span><span class="stat-label">Divisions Hiring</span></div>
+    <div class="stat-item"><span class="stat-num">500K+</span><span class="stat-label">Roles to Fill</span></div>
+    <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">Tiers</span></div>
+    <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Mission</span></div>
+  </div>
+  <div class="interview-banner">
+    <div class="banner-icon">📍</div>
+    <div>
+      <div class="banner-label">Interview Location</div>
+      <div class="banner-title">ANK Recruitment Centre — McKinney, Texas</div>
+      <div class="banner-address">Walk in or schedule your interview at:<br><strong>204 Riverstone Way, McKinney, Texas, USA</strong><br>Open for interviews — bring your CV and be ready.</div>
+      <a class="map-btn" href="https://maps.google.com/?q=204+Riverstone+Way+McKinney+Texas" target="_blank">📍 Get Directions</a>
+    </div>
+  </div>
+  <br>
+  <a class="apply-btn" href="#how-to-apply">See How to Apply ↓</a>
+</section>
+<div class="divider"></div>
+
+<!-- TIER 1 -->
+<section class="tier" id="tier1">
+  <div class="tier-header"><span class="tier-number">Tier 01</span><span class="tier-title">Executive & Corporate</span><div class="tier-line"></div></div>
+  <div class="dept-grid" id="grid-tier1">
+    <div class="dept-card exec" data-role="Executive Leadership" data-div="01">
+      <div class="dept-icon">👑</div><div class="dept-div">Division 01</div><div class="dept-name">Executive Leadership</div><div class="hiring-label">● Now Hiring</div>
+      <ul class="role-list"><li>Chief Executive Officer</li><li>Chief Operating Officer</li><li>Chief Financial Officer</li><li>Chief Technology Officer</li><li>Chief Design Officer</li><li>Chief Marketing Officer</li><li>Chief Legal Officer</li><li>Chief People Officer</li><li>Chief Sustainability Officer</li></ul>
+      <span class="role-count">9 open roles</span><button class="role-apply-btn" onclick="openApply('Executive Leadership','Division 01')">Apply for This Role</button>
+    </div>
+    <div class="dept-card exec" data-role="Corporate Affairs" data-div="02">
+      <div class="dept-icon">🏛️</div><div class="dept-div">Division 02</div><div class="dept-name">Corporate Affairs</div><div class="hiring-label">● Now Hiring</div>
+      <ul class="role-list"><li>Board of Directors</li><li>Government Relations</li><li>Regulatory Affairs</li><li>International Trade Compliance</li><li>Space Law Specialists</li><li>Maritime Law Specialists</li></ul>
+      <span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Corporate Affairs','Division 02')">Apply for This Role</button>
+    </div>
+    <div class="dept-card exec" data-role="Finance & Legal" data-div="03">
+      <div class="dept-icon">📊</div><div class="dept-div">Division 03</div><div class="dept-name">Finance & Legal</div><div class="hiring-label">● Now Hiring</div>
+      <ul class="role-list"><li>Investment Bankers</li><li>Accountants & Tax Specialists</li><li>IP & Patent Lawyers</li><li>Contract Lawyers</li><li>Risk & Insurance Managers</li><li>Compliance Officers</li></ul>
+      <span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Finance & Legal','Division 03')">Apply for This Role</button>
+    </div>
+    <div class="dept-card exec" data-role="Human Resources" data-div="04">
+      <div class="dept-icon">🤝</div><div class="dept-div">Division 04</div><div class="dept-name">Human Resources</div><div class="hiring-label">● Now Hiring</div>
+      <ul class="role-list"><li>Global Talent Recruiters</li><li>Talent Development Managers</li><li>Training & Learning Specialists</li><li>Compensation Analysts</li><li>Employee Wellbeing Officers</li><li>Culture & Diversity Leads</li></ul>
+      <span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Human Resources','Division 04')">Apply for This Role</button>
+    </div>
+  </div>
+</section>
+
+<!-- TIER 2 -->
+<section class="tier" id="tier2">
+  <div class="tier-header"><span class="tier-number">Tier 02</span><span class="tier-title">Engineering & Design</span><div class="tier-line"></div></div>
+  <div class="dept-grid">
+    <div class="dept-card" data-role="Aerospace Engineering"><div class="dept-icon">🚀</div><div class="dept-div">Division 05</div><div class="dept-name">Aerospace Engineering</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Aerospace Engineers</li><li>Structural Engineers</li><li>Propulsion Specialists</li><li>Avionics Engineers</li><li>Hypersonic Flight Engineers</li><li>Materials Scientists</li><li>Quantum Drive Researchers</li></ul><span class="role-count">7 open roles</span><button class="role-apply-btn" onclick="openApply('Aerospace Engineering','Division 05')">Apply for This Role</button></div>
+    <div class="dept-card" data-role="Naval & Marine Engineering"><div class="dept-icon">⚓</div><div class="dept-div">Division 06</div><div class="dept-name">Naval & Marine Engineering</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Naval Architects</li><li>Submarine Engineers</li><li>Hydrodynamic Specialists</li><li>Marine Propulsion Engineers</li><li>Underwater Systems Engineers</li><li>Pressure Hull Specialists</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Naval & Marine Engineering','Division 06')">Apply for This Role</button></div>
+    <div class="dept-card" data-role="Automotive Engineering"><div class="dept-icon">🏎️</div><div class="dept-div">Division 07</div><div class="dept-name">Automotive Engineering</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Supercar Designers</li><li>Electric Powertrain Engineers</li><li>Aerodynamicists</li><li>Chassis Engineers</li><li>Autonomous Driving Specialists</li><li>Battery System Engineers</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Automotive Engineering','Division 07')">Apply for This Role</button></div>
+    <div class="dept-card" data-role="AI & Technology"><div class="dept-icon">🤖</div><div class="dept-div">Division 08</div><div class="dept-name">AI & Technology</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>AI Researchers</li><li>Software Engineers</li><li>Robotics Engineers</li><li>Cybersecurity Specialists</li><li>Quantum Computing Engineers</li><li>Systems Architects</li><li>AI Ethics & Governance Leads</li></ul><span class="role-count">7 open roles</span><button class="role-apply-btn" onclick="openApply('AI & Technology','Division 08')">Apply for This Role</button></div>
+    <div class="dept-card" data-role="Design & Aesthetics"><div class="dept-icon">✏️</div><div class="dept-div">Division 09</div><div class="dept-name">Design & Aesthetics</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Lead Vehicle Designers</li><li>Industrial Designers</li><li>UX & Interface Designers</li><li>3D Modelling Specialists</li><li>Colour & Materials Experts</li><li>Prototype Model Makers</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Design & Aesthetics','Division 09')">Apply for This Role</button></div>
+    <div class="dept-card" data-role="Luxury Interior Design"><div class="dept-icon">🛋️</div><div class="dept-div">Division 10</div><div class="dept-name">Luxury Interior Design</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Interior Architects</li><li>Master Craftsmen</li><li>Furniture Designers</li><li>Lighting Designers</li><li>Textile & Materials Specialists</li><li>Hospitality Design Consultants</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Luxury Interior Design','Division 10')">Apply for This Role</button></div>
+  </div>
+</section>
+
+<!-- TIER 3 -->
+<section class="tier" id="tier3">
+  <div class="tier-header"><span class="tier-number">Tier 03</span><span class="tier-title">Manufacturing & Production</span><div class="tier-line"></div></div>
+  <div class="dept-grid">
+    <div class="dept-card"><div class="dept-icon">🔧</div><div class="dept-div">Division 11</div><div class="dept-name">Manufacturing & Production</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Factory Directors</li><li>Production Engineers</li><li>Quality Control Specialists</li><li>Assembly Technicians</li><li>Precision Machinists</li><li>Welding & Fabrication Experts</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Manufacturing & Production','Division 11')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">📦</div><div class="dept-div">Division 12</div><div class="dept-name">Supply Chain & Logistics</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Supply Chain Managers</li><li>Procurement Specialists</li><li>Vendor Relations Managers</li><li>Inventory Controllers</li><li>Import & Export Coordinators</li><li>Warehouse & Distribution Leads</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Supply Chain & Logistics','Division 12')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🛡️</div><div class="dept-div">Division 13</div><div class="dept-name">Safety & Testing</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Test Pilots & Astronauts</li><li>Crash Safety Engineers</li><li>Structural Testing Specialists</li><li>Environmental Test Engineers</li><li>Regulatory Certification Officers</li><li>Simulation & VR Test Leads</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Safety & Testing','Division 13')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🌱</div><div class="dept-div">Division 14</div><div class="dept-name">Sustainability & ESG</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Sustainability Strategists</li><li>Hydrogen Fuel Engineers</li><li>Carbon Offset Specialists</li><li>Environmental Compliance Leads</li><li>Circular Economy Designers</li><li>ESG Reporting Analysts</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Sustainability & ESG','Division 14')">Apply for This Role</button></div>
+  </div>
+</section>
+
+<!-- TIER 4 -->
+<section class="tier" id="tier4">
+  <div class="tier-header"><span class="tier-number">Tier 04</span><span class="tier-title">Operations & Fleet</span><div class="tier-line"></div></div>
+  <div class="dept-grid">
+    <div class="dept-card"><div class="dept-icon">✈️</div><div class="dept-div">Division 15</div><div class="dept-name">Flight Operations</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Commercial Pilots</li><li>Private Jet Pilots</li><li>Co-Pilots & Navigators</li><li>Flight Engineers</li><li>Cabin Crew & Pursers</li><li>Air Traffic Coordinators</li><li>Hangar & Ground Crew</li></ul><span class="role-count">7 open roles</span><button class="role-apply-btn" onclick="openApply('Flight Operations','Division 15')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🌊</div><div class="dept-div">Division 16</div><div class="dept-name">Naval Operations</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Ship & Submarine Captains</li><li>First Officers & Navigators</li><li>Marine Engineers</li><li>Sonar & Underwater Specialists</li><li>Deck Officers</li><li>Port & Harbour Managers</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Naval Operations','Division 16')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🪐</div><div class="dept-div">Division 17</div><div class="dept-name">Space Operations</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Astronauts & Space Pilots</li><li>Mission Control Specialists</li><li>Orbital Mechanics Engineers</li><li>Life Support System Engineers</li><li>Spacewalk & EVA Specialists</li><li>Space Traffic Coordinators</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Space Operations','Division 17')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">⚙️</div><div class="dept-div">Division 18</div><div class="dept-name">Maintenance & Repair</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Aircraft Maintenance Engineers</li><li>Marine Maintenance Crews</li><li>Vehicle Service Technicians</li><li>Electronics Repair Specialists</li><li>Structural Repair Engineers</li><li>Predictive Maintenance Analysts</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Maintenance & Repair','Division 18')">Apply for This Role</button></div>
+  </div>
+</section>
+
+<!-- TIER 5 -->
+<section class="tier" id="tier5">
+  <div class="tier-header"><span class="tier-number">Tier 05</span><span class="tier-title">Hospitality & Guest Services</span><div class="tier-line"></div></div>
+  <div class="dept-grid">
+    <div class="dept-card"><div class="dept-icon">💎</div><div class="dept-div">Division 19</div><div class="dept-name">Guest Experience</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Personal Concierges</li><li>Delivery Experience Managers</li><li>Client Relations Officers</li><li>After-Sales Specialists</li><li>VIP Guest Coordinators</li><li>Lifestyle Management Advisors</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Guest Experience','Division 19')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🍽️</div><div class="dept-div">Division 20</div><div class="dept-name">Culinary & Hospitality</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Executive & Private Chefs</li><li>Sommeliers & Beverage Directors</li><li>Pastry & Dessert Specialists</li><li>Butlers & Service Staff</li><li>Housekeeping Managers</li><li>Food & Nutrition Consultants</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Culinary & Hospitality','Division 20')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">❤️</div><div class="dept-div">Division 21</div><div class="dept-name">Health & Wellness</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Onboard Doctors & Surgeons</li><li>Paramedics & Nurses</li><li>Spa & Wellness Therapists</li><li>Personal Trainers</li><li>Psychologists & Counsellors</li><li>Nutritionists & Dietitians</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Health & Wellness','Division 21')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🎭</div><div class="dept-div">Division 22</div><div class="dept-name">Entertainment & Culture</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Event & Experience Directors</li><li>Musicians & Performers</li><li>Cinema & AV Technicians</li><li>Art Curators</li><li>Casino & Gaming Managers</li><li>Kids & Family Experience Leads</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Entertainment & Culture','Division 22')">Apply for This Role</button></div>
+  </div>
+</section>
+
+<!-- TIER 6 -->
+<section class="tier" id="tier6">
+  <div class="tier-header"><span class="tier-number">Tier 06</span><span class="tier-title">Security, Intelligence & Crisis</span><div class="tier-line"></div></div>
+  <div class="dept-grid">
+    <div class="dept-card"><div class="dept-icon">🔒</div><div class="dept-div">Division 23</div><div class="dept-name">Physical Security</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Private Security Directors</li><li>Close Protection Officers</li><li>Perimeter Security Specialists</li><li>Surveillance & Monitoring Teams</li><li>Security Dog Unit Handlers</li><li>Access Control Managers</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Physical Security','Division 23')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🔐</div><div class="dept-div">Division 24</div><div class="dept-name">Cyber & Intelligence</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Cybersecurity Architects</li><li>Ethical Hackers & Pen Testers</li><li>Intelligence Analysts</li><li>Data Privacy Officers</li><li>Threat Monitoring Specialists</li><li>Encrypted Comms Engineers</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Cyber & Intelligence','Division 24')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🚨</div><div class="dept-div">Division 25</div><div class="dept-name">Crisis & Disaster Response</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Crisis Management Directors</li><li>Emergency Response Coordinators</li><li>Disaster Relief Planners</li><li>Search & Rescue Specialists</li><li>Evacuation System Engineers</li><li>Communication Crisis Leads</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Crisis & Disaster Response','Division 25')">Apply for This Role</button></div>
+  </div>
+</section>
+
+<!-- TIER 7 -->
+<section class="tier" id="tier7">
+  <div class="tier-header"><span class="tier-number">Tier 07</span><span class="tier-title">Brand, Marketing & Growth</span><div class="tier-line"></div></div>
+  <div class="dept-grid">
+    <div class="dept-card"><div class="dept-icon">📣</div><div class="dept-div">Division 26</div><div class="dept-name">Marketing & Brand</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Creative Directors</li><li>Brand Strategists</li><li>Content Creators</li><li>Photographers & Videographers</li><li>Social Media Managers</li><li>Influencer & PR Managers</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Marketing & Brand','Division 26')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">📰</div><div class="dept-div">Division 27</div><div class="dept-name">Press & Media Relations</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Press & Media Directors</li><li>Public Relations Officers</li><li>Speechwriters</li><li>Event & Launch Managers</li><li>Journalist & Media Liaisons</li><li>Crisis Communications Leads</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Press & Media Relations','Division 27')">Apply for This Role</button></div>
+    <div class="dept-card"><div class="dept-icon">🌍</div><div class="dept-div">Division 28</div><div class="dept-name">Global Expansion & Real Estate</div><div class="hiring-label">● Now Hiring</div><ul class="role-list"><li>Market Expansion Strategists</li><li>Real Estate & Facilities Managers</li><li>Showroom & Experience Centre Leads</li><li>Global Partnerships Directors</li><li>Franchise & Licensing Managers</li><li>Cultural & Regional Advisors</li></ul><span class="role-count">6 open roles</span><button class="role-apply-btn" onclick="openApply('Global Expansion & Real Estate','Division 28')">Apply for This Role</button></div>
+  </div>
+</section>
+
+<!-- HOW TO APPLY -->
+<section class="apply-section" id="how-to-apply">
+  <div class="tier-header"><span class="tier-number">Apply</span><span class="tier-title">How to Join ANK</span><div class="tier-line"></div></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Find your role</div><div class="step-desc">Browse the 28 divisions and click "Apply for This Role" on the one that fits you.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Fill in your details</div><div class="step-desc">Complete the application form with your personal information, experience, and resume upload.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Come in for interview</div><div class="step-desc">Our team will reach out to schedule. Walk-ins also welcome at our McKinney, Texas office.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Join the mission</div><div class="step-desc">Successful candidates will be contacted within 48 hours of their interview.</div></div>
+  </div>
+  <div class="location-card">
+    <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;">📍 Interview Location</p>
+    <h3>ANK Recruitment Centre</h3>
+    <p>Walk-in interviews welcome. No appointment necessary.</p>
+    <div class="address">204 Riverstone Way, McKinney, Texas, USA</div>
+    <p style="font-size:13px;color:var(--dim);">Monday – Saturday &nbsp;·&nbsp; 9:00 AM – 6:00 PM</p>
+    <br><a class="map-btn" href="https://maps.google.com/?q=204+Riverstone+Way+McKinney+Texas" target="_blank">📍 Open in Google Maps</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">ANK</div>
+  <p class="footer-tagline">Beyond Imagination. Beyond Limits. — McKinney, Texas</p>
+</footer>
+
+<!-- ─── APPLICATION MODAL ─── -->
+<div class="modal-overlay" id="applyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-title" id="modalTitle">Apply for Role</div><div class="modal-sub" id="modalSub">ANK Corporation</div></div>
+      <button class="modal-close" onclick="closeApply()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="form-group">
+        <label class="form-label">Full Name <span class="req">*</span></label>
+        <input class="form-input" id="f_name" type="text" placeholder="Your full legal name" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Age <span class="req">*</span></label>
+          <input class="form-input" id="f_age" type="number" min="16" max="80" placeholder="Your age" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date of Birth <span class="req">*</span></label>
+          <input class="form-input" id="f_dob" type="date" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="req">*</span></label>
+          <input class="form-input" id="f_email" type="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number <span class="req">*</span></label>
+          <input class="form-input" id="f_phone" type="tel" placeholder="+1 (555) 000-0000" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Current Address <span class="req">*</span></label>
+        <input class="form-input" id="f_address" type="text" placeholder="Street, City, State, ZIP" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nationality <span class="req">*</span></label>
+          <input class="form-input" id="f_nationality" type="text" placeholder="e.g. American" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Years of Experience <span class="req">*</span></label>
+          <input class="form-input" id="f_exp" type="number" min="0" max="60" placeholder="e.g. 5" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Highest Qualification <span class="req">*</span></label>
+        <select class="form-select" id="f_qual" required>
+          <option value="">Select your qualification</option>
+          <option>High School Diploma</option><option>Associate Degree</option><option>Bachelor's Degree</option>
+          <option>Master's Degree</option><option>PhD / Doctorate</option><option>Professional Certification</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Field of Study / Specialisation <span class="req">*</span></label>
+        <input class="form-input" id="f_field" type="text" placeholder="e.g. Aerospace Engineering" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Preferred Interview Date <span class="req">*</span></label>
+        <input class="form-input" id="f_intdate" type="date" required>
+        <div class="form-hint">We'll add this to our calendar and confirm with you.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Preferred Interview Time <span class="req">*</span></label>
+        <select class="form-select" id="f_inttime" required>
+          <option value="">Select a time slot</option>
+          <option>9:00 AM – 10:00 AM</option><option>10:00 AM – 11:00 AM</option><option>11:00 AM – 12:00 PM</option>
+          <option>1:00 PM – 2:00 PM</option><option>2:00 PM – 3:00 PM</option><option>3:00 PM – 4:00 PM</option>
+          <option>4:00 PM – 5:00 PM</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Why do you want to work at ANK? <span class="req">*</span></label>
+        <textarea class="form-textarea" id="f_why" placeholder="Tell us what drives you and why ANK is the right fit..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Key Skills & Achievements <span class="req">*</span></label>
+        <textarea class="form-textarea" id="f_skills" placeholder="List your top skills, tools, certifications, and career highlights..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Upload Resume / CV <span class="req">*</span></label>
+        <label class="resume-upload" for="f_resume">
+          <input type="file" id="f_resume" accept=".pdf,.doc,.docx" onchange="handleFile(this)">
+          <div class="resume-upload-icon">📎</div>
+          <div class="resume-upload-text">Drag & drop or <strong>click to upload</strong><br>PDF, DOC, DOCX — max 10MB</div>
+          <div class="resume-filename" id="resumeName"></div>
+        </label>
+      </div>
+      <button class="submit-btn" onclick="submitApplication()">Submit Application →</button>
+    </div>
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✅</div>
+      <div class="success-title">Application Submitted!</div>
+      <p class="success-desc">Thank you for applying to ANK. Our team has received your application and you'll hear back within 48 hours. Your interview has been added to our calendar.</p>
+      <br><button class="apply-btn" onclick="closeApply()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ADMIN PANEL ─── -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-header">
+    <div class="admin-title">⚙️ ANK Recruitment Admin</div>
+    <div style="display:flex;gap:1rem;align-items:center;">
+      <span style="font-size:12px;color:var(--muted);" id="adminCount">0 applicants</span>
+      <button class="admin-close" onclick="document.getElementById('adminPanel').classList.remove('open')">✕ Close</button>
+    </div>
+  </div>
+  <div class="admin-body">
+    <div>
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;">Applicants</div>
+      <div class="admin-list" id="adminList"><div style="font-size:13px;color:var(--dim);padding:1rem;">No applications yet.</div></div>
+    </div>
+    <div class="admin-detail" id="adminDetail"><div class="detail-empty">Select an applicant to view their details, AI summary, and manage their status.</div></div>
+  </div>
+</div>
+
+<!-- APEX CHATBOT -->
+<button class="apex-btn" onclick="toggleApex()" title="Ask Apex">🤖<span class="apex-badge">AI</span></button>
+<div class="apex-window" id="apexWindow">
+  <div class="apex-header">
+    <div class="apex-avatar">A</div>
+    <div><div class="apex-name">Apex</div><div class="apex-status">● Online — ANK Assistant</div></div>
+  </div>
+  <div class="apex-quick" id="apexQuick">
+    <button class="apex-quick-btn" onclick="apexQuick('Review a resume')">📄 Review Resume</button>
+    <button class="apex-quick-btn" onclick="apexQuick('How many applicants?')">👥 Applicants</button>
+    <button class="apex-quick-btn" onclick="apexQuick('What roles are open?')">📋 Open Roles</button>
+    <button class="apex-quick-btn" onclick="apexQuick('Interview tips')">💡 Interview Tips</button>
+  </div>
+  <div class="apex-msgs" id="apexMsgs">
+    <div class="apex-msg bot">👋 Hi! I'm <b>Apex</b>, your ANK recruitment assistant. I can help you review resumes, check applicant status, answer questions about open roles, and more. What do you need?</div>
+  </div>
+  <div class="apex-input-row">
+    <input class="apex-input" id="apexInput" placeholder="Ask Apex anything..." onkeydown="if(event.key==='Enter')sendApex()">
+    <button class="apex-send" onclick="sendApex()">↑</button>
+  </div>
+</div>
+
+<button class="admin-toggle" onclick="document.getElementById('adminPanel').classList.add('open')">⚙️ Admin Panel</button>
+
+<script>
+// ── STATE ──
+const applications = [];
+let currentRole = '';
+let currentDiv = '';
+let selectedApplicant = null;
+const filledRoles = new Set();
+
+// ── MODAL ──
+function openApply(role, div) {
+  currentRole = role;
+  currentDiv = div;
+  document.getElementById('modalTitle').textContent = 'Apply — ' + role;
+  document.getElementById('modalSub').textContent = div + ' · ANK Corporation';
+  document.getElementById('modalBody').style.display = 'block';
+  document.getElementById('successScreen').style.display = 'none';
+  document.getElementById('applyModal').classList.add('open');
+}
+function closeApply() {
+  document.getElementById('applyModal').classList.remove('open');
+  clearForm();
+}
+function clearForm() {
+  ['f_name','f_age','f_dob','f_email','f_phone','f_address','f_nationality','f_exp','f_qual','f_field','f_intdate','f_inttime','f_why','f_skills'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  document.getElementById('resumeName').textContent = '';
+  document.getElementById('f_resume').value = '';
+}
+function handleFile(input) {
+  if(input.files[0]) document.getElementById('resumeName').textContent = '✓ ' + input.files[0].name;
+}
+
+// ── SUBMIT ──
+function submitApplication() {
+  const fields = {
+    name: document.getElementById('f_name').value.trim(),
+    age: document.getElementById('f_age').value.trim(),
+    dob: document.getElementById('f_dob').value,
+    email: document.getElementById('f_email').value.trim(),
+    phone: document.getElementById('f_phone').value.trim(),
+    address: document.getElementById('f_address').value.trim(),
+    nationality: document.getElementById('f_nationality').value.trim(),
+    experience: document.getElementById('f_exp').value.trim(),
+    qualification: document.getElementById('f_qual').value,
+    field: document.getElementById('f_field').value.trim(),
+    intDate: document.getElementById('f_intdate').value,
+    intTime: document.getElementById('f_inttime').value,
+    why: document.getElementById('f_why').value.trim(),
+    skills: document.getElementById('f_skills').value.trim(),
+    resume: document.getElementById('f_resume').files[0]?.name || null,
+    role: currentRole,
+    division: currentDiv,
+    status: 'Pending',
+    submittedAt: new Date().toLocaleString(),
+    id: Date.now()
+  };
+
+  // Validate all fields
+  const required = ['name','age','dob','email','phone','address','nationality','experience','qualification','field','intDate','intTime','why','skills'];
+  for(const k of required) {
+    if(!fields[k]) { alert('Please fill in all required fields.'); return; }
+  }
+  if(!fields.resume) { alert('Please upload your resume.'); return; }
+
+  // Generate AI summary & pros/cons
+  fields.aiSummary = generateSummary(fields);
+  fields.pros = generatePros(fields);
+  fields.cons = generateCons(fields);
+
+  applications.push(fields);
+  renderAdminList();
+  sendEmailNotification(fields);
+  addToCalendar(fields);
+
+  document.getElementById('modalBody').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+  clearForm();
+}
+
+// ── AI SUMMARY ──
+function generateSummary(f) {
+  return `${f.name} (age ${f.age}) is a ${f.nationality} national applying for ${f.role} in ${f.division}. They hold a ${f.qualification} in ${f.field} with ${f.experience} year(s) of relevant experience. Their motivation for joining ANK: "${f.why.substring(0,120)}..." Key skills include: ${f.skills.substring(0,150)}. Interview scheduled for ${f.intDate} at ${f.intTime} at 204 Riverstone Way, McKinney, TX.`;
+}
+function generatePros(f) {
+  const pros = [];
+  if(parseInt(f.experience) >= 5) pros.push('Strong experience level (' + f.experience + ' years)');
+  if(['Master\'s Degree','PhD / Doctorate'].includes(f.qualification)) pros.push('Advanced academic qualification');
+  if(f.why.length > 100) pros.push('Demonstrates clear motivation and passion');
+  if(f.skills.length > 100) pros.push('Detailed skill set provided');
+  if(parseInt(f.age) >= 25 && parseInt(f.age) <= 45) pros.push('Prime career age range');
+  if(pros.length === 0) pros.push('Completed full application');
+  return pros;
+}
+function generateCons(f) {
+  const cons = [];
+  if(parseInt(f.experience) < 2) cons.push('Limited professional experience');
+  if(['High School Diploma','Associate Degree'].includes(f.qualification)) cons.push('Qualification may not meet senior role requirements');
+  if(f.why.length < 50) cons.push('Motivation statement is brief — may need probing in interview');
+  if(f.skills.length < 50) cons.push('Skills section lacks detail');
+  if(parseInt(f.age) < 22) cons.push('Relatively young — assess maturity in interview');
+  if(cons.length === 0) cons.push('No major concerns identified at this stage');
+  return cons;
+}
+
+// ── EMAIL NOTIFICATION (simulated via Anthropic API) ──
+async function sendEmailNotification(f) {
+  try {
+    const prompt = `You are an email notification system for ANK Corporation. 
+A new job application has been received. Write a brief confirmation email TO THE APPLICANT from ANK HR, 
+telling them their application for "${f.role}" has been received and their interview on ${f.intDate} at ${f.intTime} at 204 Riverstone Way, McKinney, TX is confirmed. 
+Keep it professional and under 120 words. Sign off as "ANK Recruitment Team".`;
+
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await response.json();
+    const emailText = data.content?.[0]?.text || '';
+    f.confirmationEmail = emailText;
+    console.log('[ANK] Confirmation email generated for', f.email, ':\n', emailText);
+  } catch(e) { console.log('[ANK] Email generation skipped'); }
+}
+
+// ── STATUS CHANGE EMAIL ──
+async function sendStatusEmail(f) {
+  try {
+    const statusMessages = {
+      'Interview': `Your application for ${f.role} has progressed — you have been invited for an interview on ${f.intDate} at ${f.intTime}. Please come to 204 Riverstone Way, McKinney, Texas.`,
+      'Hired': `Congratulations! We are thrilled to offer you a position at ANK Corporation in the ${f.role} department. Welcome to the team that is building the future.`,
+      'Rejected': `Thank you for applying to ANK Corporation for the ${f.role} position. After careful consideration, we will not be moving forward with your application at this time. We encourage you to apply again in the future.`
+    };
+    const msg = statusMessages[f.status];
+    if(!msg) return;
+
+    const prompt = `Write a professional email to ${f.name} at ${f.email} from ANK HR with this message: "${msg}". Keep it under 100 words. Sign as "ANK Recruitment Team".`;
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await response.json();
+    console.log('[ANK] Status email for', f.email, ':', data.content?.[0]?.text);
+    showToast('📧 Status email sent to ' + f.email);
+  } catch(e) { console.log('[ANK] Status email skipped'); }
+}
+
+// ── CALENDAR ──
+async function addToCalendar(f) {
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        mcp_servers: [{ type: "url", url: "https://calendarmcp.googleapis.com/mcp/v1", name: "google-calendar" }],
+        messages: [{
+          role: "user",
+          content: `Create a Google Calendar event titled "ANK Interview — ${f.name} (${f.role})" on ${f.intDate} at ${f.intTime} at location "204 Riverstone Way, McKinney, Texas, USA". Description: "Applicant: ${f.name}, Age: ${f.age}, Email: ${f.email}, Phone: ${f.phone}, Role: ${f.role}, Division: ${f.division}". Duration: 1 hour.`
+        }],
+      })
+    });
+    const data = await response.json();
+    console.log('[ANK] Calendar event created:', data.content?.[0]?.text);
+    showToast('📅 Interview added to Google Calendar');
+  } catch(e) { console.log('[ANK] Calendar sync skipped'); }
+}
+
+// ── GMAIL NOTIFICATION TO ADMIN ──
+async function sendAdminEmail(f) {
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        mcp_servers: [{ type: "url", url: "https://gmailmcp.googleapis.com/mcp/v1", name: "gmail" }],
+        messages: [{
+          role: "user",
+          content: `Send an email to me (the authenticated Gmail user) with subject "New ANK Application — ${f.name} for ${f.role}" and body:
+"New application received at ANK Careers.
+
+Name: ${f.name}
+Age: ${f.age}
+Email: ${f.email}
+Phone: ${f.phone}
+Role: ${f.role} (${f.division})
+Interview: ${f.intDate} at ${f.intTime}
+Qualification: ${f.qualification} in ${f.field}
+Experience: ${f.experience} years
+
+AI Summary: ${f.aiSummary}
+
+Please log in to the ANK Admin Panel to review this applicant."
+`
+        }]
+      })
+    });
+    const data = await response.json();
+    console.log('[ANK] Admin notification email sent:', data.content?.[0]?.text);
+  } catch(e) { console.log('[ANK] Admin email skipped'); }
+}
+
+// ── ADMIN PANEL ──
+function renderAdminList() {
+  const list = document.getElementById('adminList');
+  document.getElementById('adminCount').textContent = applications.length + ' applicant' + (applications.length !== 1 ? 's' : '');
+  if(applications.length === 0) { list.innerHTML = '<div style="font-size:13px;color:var(--dim);padding:1rem;">No applications yet.</div>'; return; }
+  list.innerHTML = applications.map((a,i) => `
+    <div class="admin-list-item ${selectedApplicant?.id === a.id ? 'active':''}" onclick="selectApplicant(${i})">
+      <div class="ali-name">${a.name}</div>
+      <div class="ali-role">${a.role} · ${a.division}</div>
+      <span class="ali-status status-${a.status.toLowerCase()}">${a.status}</span>
+    </div>
+  `).join('');
+  sendAdminEmail(applications[applications.length-1]);
+}
+
+function selectApplicant(i) {
+  selectedApplicant = applications[i];
+  renderAdminList();
+  const a = selectedApplicant;
+  const prosHTML = a.pros.map(p => `<li>${p}</li>`).join('');
+  const consHTML = a.cons.map(c => `<li>${c}</li>`).join('');
+
+  document.getElementById('adminDetail').innerHTML = `
+    <div class="detail-name">${a.name}</div>
+    <div class="detail-role">${a.role} · ${a.division} · Applied ${a.submittedAt}</div>
+    <span class="ali-status status-${a.status.toLowerCase()}" style="margin-bottom:1rem;display:inline-block;">${a.status}</span>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Personal Details</div>
+      <div class="detail-grid">
+        <div class="detail-field"><div class="detail-field-label">Age</div><div class="detail-field-value">${a.age}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Date of Birth</div><div class="detail-field-value">${a.dob}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Email</div><div class="detail-field-value">${a.email}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Phone</div><div class="detail-field-value">${a.phone}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Nationality</div><div class="detail-field-value">${a.nationality}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Address</div><div class="detail-field-value">${a.address}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Qualification</div><div class="detail-field-value">${a.qualification}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Field</div><div class="detail-field-value">${a.field}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Experience</div><div class="detail-field-value">${a.experience} years</div></div>
+        <div class="detail-field"><div class="detail-field-label">Resume</div><div class="detail-field-value">${a.resume || 'Not uploaded'}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Interview Date</div><div class="detail-field-value">${a.intDate}</div></div>
+        <div class="detail-field"><div class="detail-field-label">Interview Time</div><div class="detail-field-value">${a.intTime}</div></div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Motivation</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7;">${a.why}</div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Skills & Achievements</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7;">${a.skills}</div>
+    </div>
+
+    <div class="detail-section">
+      <div class="ai-box">
+        <div class="ai-box-title">🤖 Apex AI Summary</div>
+        <div class="ai-summary">${a.aiSummary}</div>
+        <div class="pros-cons">
+          <div class="pro-box"><h4>✓ PROS</h4><ul>${prosHTML}</ul></div>
+          <div class="con-box"><h4>✗ CONS</h4><ul>${consHTML}</ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Update Status</div>
+      <div class="status-btns">
+        <button class="status-btn btn-interview" onclick="updateStatus(${a.id},'Interview')">📅 Move to Interview</button>
+        <button class="status-btn btn-hired" onclick="updateStatus(${a.id},'Hired')">✓ Mark as Hired</button>
+        <button class="status-btn btn-rejected" onclick="updateStatus(${a.id},'Rejected')">✗ Reject</button>
+      </div>
+    </div>
+  `;
+}
+
+function updateStatus(id, newStatus) {
+  const app = applications.find(a => a.id === id);
+  if(!app) return;
+  const oldStatus = app.status;
+  app.status = newStatus;
+
+  if(newStatus === 'Hired') {
+    filledRoles.add(app.role);
+    document.querySelectorAll('.dept-card').forEach(card => {
+      if(card.dataset.role === app.role) card.classList.add('filled');
+    });
+  }
+
+  sendStatusEmail(app);
+  renderAdminList();
+  selectApplicant(applications.indexOf(app));
+  showToast('Status updated to ' + newStatus + '. Email sent to ' + app.email);
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:var(--bg3);border:.5px solid var(--cyan);color:var(--text);font-size:12px;padding:10px 20px;border-radius:8px;z-index:9999;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.5);';
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+// ── APEX CHAT ──
+function toggleApex() {
+  document.getElementById('apexWindow').classList.toggle('open');
+}
+function apexQuick(text) {
+  document.getElementById('apexInput').value = text;
+  sendApex();
+}
+const apexHistory = [];
+
+async function sendApex() {
+  const input = document.getElementById('apexInput');
+  const msg = input.value.trim();
+  if(!msg) return;
+  input.value = '';
+  appendApex(msg, 'user');
+  apexHistory.push({ role: 'user', content: msg });
+
+  const typing = document.createElement('div');
+  typing.className = 'apex-typing';
+  typing.textContent = 'Apex is thinking...';
+  typing.id = 'apexTyping';
+  document.getElementById('apexMsgs').appendChild(typing);
+  scrollApex();
+
+  const context = `You are Apex, the internal AI assistant for ANK Corporation's recruitment team. You help with reviewing resumes, summarising applicants, giving interview tips, answering questions about ANK's open roles (28 divisions across 7 tiers), and general HR tasks. Current applicants: ${applications.length}. Filled roles: ${[...filledRoles].join(', ') || 'None yet'}. Be concise, professional, and helpful. Use ANK's brand voice: bold, futuristic, confident. Keep replies under 120 words unless reviewing a resume.`;
+
+  try {
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "",
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1000,
+        system: context,
+        messages: apexHistory
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.error?.message || 'API error ' + response.status);
+    }
+
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || 'I encountered an issue. Please try again.';
+    apexHistory.push({ role: 'assistant', content: reply });
+    // Keep history manageable
+    if (apexHistory.length > 20) apexHistory.splice(0, 2);
+    document.getElementById('apexTyping')?.remove();
+    appendApex(reply, 'bot');
+  } catch(e) {
+    document.getElementById('apexTyping')?.remove();
+    const errMsg = e.message.includes('Failed to fetch')
+      ? 'Unable to connect — make sure you are online and the file is opened in a browser (not a code editor preview).'
+      : 'Error: ' + e.message;
+    appendApex('⚠️ ' + errMsg, 'bot');
+    apexHistory.pop(); // remove failed user message
+  }
+}
+function appendApex(text, who) {
+  const div = document.createElement('div');
+  div.className = 'apex-msg ' + who;
+  div.textContent = text;
+  document.getElementById('apexMsgs').appendChild(div);
+  scrollApex();
+}
+function scrollApex() {
+  const msgs = document.getElementById('apexMsgs');
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ── NAV ACTIVE ──
+const sections = document.querySelectorAll('.tier,.apply-section');
+const navLinks = document.querySelectorAll('.nav-scroll a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(s.getBoundingClientRect().top <= 100) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#' + current) { a.classList.add('active'); a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
+  });
+}, { passive: true });
+navLinks.forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+  });
+});
+document.querySelector('.nav-cta').addEventListener('click', e => {
+  e.preventDefault();
+  const t = document.querySelector('#how-to-apply');
+  window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
